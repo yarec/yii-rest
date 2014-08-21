@@ -1,0 +1,10 @@
+{  
+    "require": {  
+        "vlucas/valitron": "dev-master",
+        "yarec/pcaptcha": "dev-master",
+        "yarec/putil": "dev-master"
+    },  
+    "config" : {  
+        "vendor-dir" : "protected/vendor"  
+    }  
+} 

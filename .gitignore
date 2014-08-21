@@ -1,0 +1,6 @@
+.hg/
+node_modules/
+assets/
+protected/runtime/
+protected/vendor/
+composer.lock
