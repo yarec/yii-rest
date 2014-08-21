@@ -21,8 +21,8 @@
     },
     "config" : {  
         "vendor-dir" : "protected/vendor"  
-    }
+    },
     "require-dev": {
         "phpunit/phpunit": "@stable"
-    },
+    }
 }
