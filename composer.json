@@ -1,10 +1,28 @@
-{  
-    "require": {  
+{
+    "name": "yarec/yii-rest",
+    "version": "0.0.1",
+    "type": "library",
+    "description": "yii webapp template with REST",
+    "keywords": ["webapp", "yii" ],
+    "homepage": "http://github.com/yarec/yii-rest",
+    "license" : "BSD",
+    "authors" : [
+        {
+            "name": "yarec",
+            "email": "rwtest@gmail.com",
+            "homepage": "http://www.softidy.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
         "vlucas/valitron": "dev-master",
         "yarec/pcaptcha": "dev-master",
         "yarec/putil": "dev-master"
-    },  
+    },
     "config" : {  
         "vendor-dir" : "protected/vendor"  
-    }  
-} 
+    }
+    "require-dev": {
+        "phpunit/phpunit": "@stable"
+    },
+}
