@@ -47,6 +47,9 @@ class RestController extends Controller
         if($this->id){
             $this->data['id'] = 0+$this->id;
         }
+        if(isset($_POST)){
+            $this->data = $_POST;
+        }
 
         $filterChain->run();  
     }  
