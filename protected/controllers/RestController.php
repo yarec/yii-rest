@@ -8,13 +8,10 @@ class RestController extends Controller
 
 	public function actions() {
 		return array(
-			// captcha action renders the CAPTCHA image displayed on the contact page
 			'captcha'=>array(
 				'class'=>'CCaptchaAction',
 				'backColor'=>0xFFFFFF,
 			),
-			// page action renders "static" pages stored under 'protected/views/site/pages'
-			// They can be accessed via: index.php?r=site/page&view=FileName
 			'page'=>array(
 				'class'=>'CViewAction',
 			),
@@ -34,23 +31,7 @@ class RestController extends Controller
     public $ret = array('code'=>0);
 
     public function filterInit($filterChain) {  
-        $baseurl = Yii::app()->getBaseUrl(true);
-        $actionid = $this->action->id;
-        $this->aid=$actionid;
-
-        $this->input = file_get_contents("php://input");
-        if($this->input){
-            $this->data = json_decode($this->input, true);
-        }
-
-        $this->id = isset($_GET['id'])?$_GET['id']:null;
-        if($this->id){
-            $this->data['id'] = 0+$this->id;
-        }
-        if(isset($_POST)){
-            $this->data = $_POST;
-        }
-
+        $this->data['_uptm'] = date('Y-m-d H:i:s');
         $filterChain->run();  
     }  
 
@@ -60,7 +41,7 @@ class RestController extends Controller
     }
 
     /* GET Item /{id} */
-    public function actionShow() {
+    public function actionShow($id) {
         $this->ret['data'] = $this->data;
         $this->sendJSON($this->ret);
     }
@@ -75,13 +56,13 @@ class RestController extends Controller
 
 
     /* Put Item /{id} */
-    public function actionUpdate() {
+    public function actionUpdate($id) {
         $this->ret['data'] = $this->data;
         $this->sendJSON($this->ret);
     }
 
     /* Delete /{id} */
-    public function actionDelete() {
+    public function actionDelete($id) {
         $this->ret['data'] = $this->data;
         $this->sendJSON($this->ret);
     }

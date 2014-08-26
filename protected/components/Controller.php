@@ -20,4 +20,42 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+
+    public $id= null;
+    public $aid= null;
+    public $page= null;
+    public $offset= null;
+    public $pagesize= null;
+    public $input = null;
+    public $data = null;
+
+    public function filterInitdata($filterChain) {  
+        $baseurl = Yii::app()->getBaseUrl(true);
+        $this->aid= $this->action->id;
+        $this->page= isset($_GET['page'])?$_GET['page']:1;
+        $this->pagesize= isset($_GET['pagesize'])?$_GET['pagesize']:10;
+        $this->offset = ($this->page-1)* $this->pagesize;
+
+        $this->input = file_get_contents("php://input");
+        if($this->input){
+            $this->data = json_decode($this->input, true);
+        }
+
+        $this->id = isset($_GET['id'])?$_GET['id']:null;
+        if($this->id){
+            $this->data['id'] = 0+$this->id;
+        }
+        if(!empty($_POST)){
+            $this->data = $_POST;
+        }
+
+        $filterChain->run();  
+    }  
+
+    public function getCountArray($count){
+        $ret['cur_page'] = $this->page;
+        $ret['total_page'] = ceil($count/$this->pagesize);
+        $ret['count'] = $count;
+        return $ret;
+    }
 }
