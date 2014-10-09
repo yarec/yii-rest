@@ -2,6 +2,7 @@
 
 class SiteController extends Controller
 {
+    use PUtil\YiiUtils;
 	/**
 	 * Declares class-based actions.
 	 */
@@ -106,4 +107,12 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+    public function actionT(){
+        $s = '';
+        for($i=0; $i< 16; $i++){
+            $s .= rand(0,9);
+        }
+        echo $s;
+    }
+
 }

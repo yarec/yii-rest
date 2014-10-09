@@ -2,3 +2,5 @@
 node_modules/
 protected/vendor/
 composer.lock
+assets/
+protected/runtime/
