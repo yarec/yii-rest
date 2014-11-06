@@ -46,7 +46,7 @@ return array(
 
 		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString' => 'mysql:host=192.168.1.200;dbname=xyy',
+			'connectionString' => 'mysql:host=192.168.1.200;dbname=rest',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '123456',
@@ -82,6 +82,8 @@ return array(
            'SUCC'        => 1,
            'FAIL'        => 0,
            'OK'        => 1,
+           'SQL_ERR'   => 3000,
+           'PARAM_ERR' => 3001,
         ),
 	),
 );

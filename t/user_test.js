@@ -4,7 +4,7 @@ var assert = require("assert")
 var crypto = require('crypto');
 var httpreq = require('httpreq');
 
-var domain = 'admin.xyingyong.com';
+var domain = 'yii.rest';
 var path_root = '/';
 
 var ms = new Date().getTime();
