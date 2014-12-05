@@ -28,7 +28,8 @@ class RestController extends Controller
     public function filterInit($filterChain) {  
         $this->data['_uptm'] = date('Y-m-d H:i:s');
         self::info("initdata: " . json_encode($this->data));
-        $filterChain->run();  
+        $this->ck_auth($filterChain,'uid');
+        #$filterChain->run();  
     }  
 
     /**
@@ -74,13 +75,13 @@ class RestController extends Controller
      * ============================
      */
     public function getItems() {
-        $type = isset($_GET['type'])?$_GET['type']:'all';
 
+        $type = self::get('type','all');
         $conds = '';
         $params= array();
         if($type!='all'){
-            $conds = 'type=:type';
-            $params = array(':type'=>$type);
+            $conds .= 'type=:type';
+            $params[':type'] = $type;
         }
 
         $items= self::db()
