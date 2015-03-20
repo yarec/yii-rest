@@ -78,6 +78,13 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
+        'testStatus' => 1,
+        'acao' => [
+            'acao' => '*',
+            'acam' => 'POST, PUT, GET, DELETE, OPTIONS',
+            'acah' => 'Content-Type, X-Requested-With',
+            'acma' => '60'
+        ],
         'errors' => array(
            'SUCC'        => 1,
            'FAIL'        => 0,
