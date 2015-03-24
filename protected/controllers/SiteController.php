@@ -107,6 +107,33 @@ class SiteController extends Controller
         self::captcha();
     }
 
+    public function actionUpload(){
+        $upname = 'upload';
+        if(isset($_FILES[$upname])){
+            $imgname = self::saveimg('upload');
+            $ret = array('name'=>$imgname);
+            self::ret($ret);
+        }
+        else if(self::tst()){
+            echo <<<EOF
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"><title>只使用html   怎样实现 上传文件？_百度知道      </title><link rel="alternate" type="application/rss+xml" title="“只使用html   怎样实现 上传文件？”的最新回答（RSS 2.0）" href="http://zhidao.baidu.com/q?ct=20&qid=68168077&pn=65535&rn=25&tn=rssqb">
+<link href="/ikqb.css" rel="stylesheet" type="text/css">
+</head>
+<body><form action="/site/upload" method="post" enctype ="multipart/form-data" runat="server"> 
+<input id="File1" runat="server" name="upload" type="file" /> 
+<input type="submit" name="Button1" value="Button" id="Button1" />
+</form>
+</body> 
+</html>
+EOF;
+        }
+        else{
+            self::ret(1, "upload required");
+        }
+    }
+
     public function actionT(){
         $s = '';
         for($i=0; $i< 16; $i++){
