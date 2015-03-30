@@ -2,5 +2,7 @@
 node_modules/
 protected/vendor/
 composer.lock
-assets/
-protected/runtime/
+
+syntax: regexp
+assets/(?!empty)
+protected/runtime/(?!empty)
