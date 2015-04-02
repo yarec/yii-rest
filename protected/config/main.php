@@ -46,7 +46,7 @@ return array(
 
 		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString' => 'mysql:host=192.168.1.200;dbname=rest',
+			'connectionString' => 'mysql:host=127.0.0.1;dbname=rest',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '123456',
@@ -86,9 +86,12 @@ return array(
             'acma' => '60'
         ],
         'errors' => array(
-           'SUCC'        => 1,
-           'FAIL'        => 0,
-           'OK'        => 1,
+           'OK'        => 0,    # 正确返回
+           'AUTH'      => 1,    # 权限错误
+           'CODE'      => 2,    # 验证码错误
+           'VALID'     => 3,    # 表单验证错误
+           'KEY'       => 4,    # 无效密钥
+           'EMAIL'     => 5,    # 无效邮箱
            'SQL_ERR'   => 3000,
            'PARAM_ERR' => 3001,
         ),
